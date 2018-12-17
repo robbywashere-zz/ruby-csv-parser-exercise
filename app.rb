@@ -13,30 +13,30 @@ end
 
 class City 
 
-  @@city_abbrvs = {
+  CITY_CODES = {
     NYC: 'New York City',
     LA: 'Los Angeles',
     ATL: 'Atlanta'
   }
 
-  @@city_fulls = @@city_abbrvs.invert
+  CITY_NAMES = CITY_CODES.invert
   
 
   attr_reader :abbrv, :full
 
   def initialize(city)
 
-    if @@city_abbrvs.key? city.to_sym
+    if CITY_CODES.key? city.to_sym
       @abbrv = city.to_s
-      @full = @@city_abbrvs[city.to_sym]
+      @full = CITY_CODES[city.to_sym]
 
-    elsif @@city_fulls.key? city.to_sym
-      @abbrv = @@city_fulls[city.to_sym].to_s
+    elsif CITY_NAMES.key? city.to_sym
+      @abbrv = CITY_NAMES[city.to_sym].to_s
       @full = city.to_s
     else
 
       raise "Unknown city #{city}"
-
+      
     end
     
 
